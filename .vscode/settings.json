@@ -1,0 +1,14 @@
+{
+    "go.buildOnSave": "off",
+    "go.lintOnSave" :"off",
+    "go.vetOnSave":"off",
+    "go.buildTags": "",
+    "go.buildFlags": [],
+    "go.lintFlags": [],
+    "go.vetFlags": [],
+    "go.coverOnSave": false,
+    "go.useCodeSnippetsOnFunctionSuggest":true,
+    "go.formatTool": "goreturns",
+    "go.gopath": "/Users/teackreais/Documents/Code_Base/GO",
+    "go.gocodeAutoBuild": false
+}
