@@ -2,6 +2,8 @@ package main
 
 import (
 	"bytes"
+	"crypto/aes"
+	"crypto/cipher"
 	"crypto/md5"
 	"crypto/rand"
 	"encoding/base64"
@@ -12,10 +14,42 @@ import (
 )
 
 func AesEncrypt(orig string, key string) string {
-	return orig
+	// 转成字节数组
+	origData := []byte(orig)
+	k0 := []byte(key)
+	k := k0[:24]
+	// 分组秘钥
+	block, _ := aes.NewCipher(k)
+	// 获取秘钥块的长度
+	blockSize := block.BlockSize()
+	// 补全码
+	origData = PKCS7Padding(origData, blockSize)
+	// 加密模式
+	blockMode := cipher.NewCBCEncrypter(block, k[:blockSize])
+	// 创建数组
+	cryted := make([]byte, len(origData))
+	// 加密
+	blockMode.CryptBlocks(cryted, origData)
+	return base64.StdEncoding.EncodeToString(cryted)
 }
 func AesDecrypt(cryted string, key string) string {
-	return cryted
+	// 转成字节数组
+	crytedByte, _ := base64.StdEncoding.DecodeString(cryted)
+	k0 := []byte(key)
+	k := k0[:24]
+	// 分组秘钥
+	block, _ := aes.NewCipher(k)
+	// 获取秘钥块的长度
+	blockSize := block.BlockSize()
+	// 加密模式
+	blockMode := cipher.NewCBCDecrypter(block, k[:blockSize])
+	// 创建数组
+	orig := make([]byte, len(crytedByte))
+	// 解密
+	blockMode.CryptBlocks(orig, crytedByte)
+	// 去补全码
+	orig = PKCS7UnPadding(orig)
+	return string(orig)
 }
 
 //补码

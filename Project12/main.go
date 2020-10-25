@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-const keyroot = "hT7+#LieF45d0gf~v2OUcxtJr6^$!x"
+const keyroot = "hT7+5d0gf~v2OUcxtJr6^$!x" //24个字符不报错
 
 var storage map[string]string = make(map[string]string)
 var key map[string]string = make(map[string]string)
@@ -16,7 +16,7 @@ func main() {
 	keybool := judgeFileExist("key.dat")
 	if storagebool && keybool {
 		keydat := readFile("key.dat")
-		jsonstr := AesDecrypt(keydat, keyroot)
+		jsonstr := AesDecrypt(keydat, keyroot) //无法处理解密失败的错误
 		key = json2Map(jsonstr)
 		if key["MD5"] != getFileMd5("storage.dat") {
 			fmt.Println("文件key.dat或文件storage.dat被破坏！")

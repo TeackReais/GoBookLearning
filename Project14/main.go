@@ -8,11 +8,11 @@ import (
 )
 func main() {
     orig := "http://c.biancheng.net/golang/"
-	key := "123456781234567812345678"
+    key := "123456781234567812345678"
     fmt.Println("原文：", orig)
     encryptCode := AesEncrypt(orig, key)
     fmt.Println("密文：", encryptCode)
-    decryptCode := AesDecrypt("abcde", key)
+    decryptCode := AesDecrypt(encryptCode, key)
     fmt.Println("解密结果：", decryptCode)
 }
 func AesEncrypt(orig string, key string) string {
