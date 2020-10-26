@@ -24,7 +24,7 @@ func main() {
 		content()
 		fmt.Print("请输入命令:")
 		fmt.Scanln(&input)
-		if input == "4" {
+		if input == "5" {
 			break
 		} else if input == "3" {
 			var keystring = inputkeystring()
@@ -67,6 +67,20 @@ func main() {
 			storage[keystring] = inputstorage1
 			updateTwoFiles(storage, key)
 			fmt.Println("保存完毕。")
+			pauseAndReturn()
+			continue
+		} else if input == "4" {
+			fmt.Println("输入Y或y确认删除保存数据，输入其它字符取消。")
+			var inputConfirm string
+			fmt.Scanln(&inputConfirm)
+			if (inputConfirm != "Y") && (inputConfirm != "y") {
+				fmt.Println("已取消。")
+				pauseAndReturn()
+				continue
+			}
+			deleteDatabase()
+			updateTwoFiles(storage, key)
+			fmt.Println("删除完毕。")
 			pauseAndReturn()
 			continue
 		} else {

@@ -9,7 +9,8 @@ func content() {
 	fmt.Println("[1]保存一个数据。")
 	fmt.Println("[2]查询一个数据。")
 	fmt.Println("[3]删除一个数据。")
-	fmt.Println("[4]关闭程序。")
+	fmt.Println("[4]清空保存数据。")
+	fmt.Println("[5]关闭程序。")
 }
 
 func inputkeystring() string {
@@ -68,4 +69,10 @@ func programStart() {
 	storagedat := readFile("storage.dat")
 	jsonstr2 := AesDecrypt(storagedat, key["KeyMain"])
 	storage = json2Map(jsonstr2)
+}
+
+func deleteDatabase() {
+	for a, _ := range storage {
+		delete(storage, a)
+	}
 }
