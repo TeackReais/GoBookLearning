@@ -1,4 +1,4 @@
-package main
+package main //保存通用的文件读取和错误返回
 
 import (
 	"fmt"

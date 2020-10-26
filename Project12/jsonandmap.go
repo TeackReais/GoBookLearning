@@ -1,4 +1,4 @@
-package main
+package main //map和json的变换
 
 import (
 	"encoding/json"
@@ -7,7 +7,8 @@ import (
 func map2Json(map1 map[string]string) string {
 	jsonStr, err := json.Marshal(map1)
 	errorExit(err, 5)
-	return string(jsonStr)
+	result := string(jsonStr)
+	return result
 }
 
 func json2Map(jsonStr string) map[string]string {
