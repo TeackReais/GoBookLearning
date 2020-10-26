@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-const keyroot = "hT7+5d0gf~v2OUcxtJr6^$!x" //24个字符不报错
+const keyroot = "hT7+5d0gf~&vz2OxUc#@!xtJr6^$!x" //24个字符不报错
 
 var storage map[string]string = make(map[string]string)
 var key map[string]string = make(map[string]string)

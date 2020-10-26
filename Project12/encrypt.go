@@ -17,7 +17,7 @@ func AesEncrypt(orig string, key string) string {
 	// 转成字节数组
 	origData := []byte(orig)
 	k0 := []byte(key)
-	k := k0[:24]
+	k := k0[len(k0)-26 : len(k0)-2]
 	// 分组秘钥
 	block, _ := aes.NewCipher(k)
 	// 获取秘钥块的长度
@@ -36,7 +36,7 @@ func AesDecrypt(cryted string, key string) string {
 	// 转成字节数组
 	crytedByte, _ := base64.StdEncoding.DecodeString(cryted)
 	k0 := []byte(key)
-	k := k0[:24]
+	k := k0[len(k0)-26 : len(k0)-2]
 	// 分组秘钥
 	block, _ := aes.NewCipher(k)
 	// 获取秘钥块的长度
