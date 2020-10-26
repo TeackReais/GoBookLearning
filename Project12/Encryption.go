@@ -1,4 +1,4 @@
-package main
+package main //保存AES加密函数，MD5生成函数，密码生成函数
 
 import (
 	"bytes"
