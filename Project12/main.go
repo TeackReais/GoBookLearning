@@ -38,6 +38,8 @@ func main() {
 		judgeAndCreateFile("storage.dat")
 		judgeAndCreateFile("key.dat")
 		key["KeyMain"] = AesEncrypt(SessionId(), keyroot)
+		jsonstr2 := map2Json(storage)
+		writeFile("storage.dat", AesEncrypt(jsonstr2, key["KeyMain"]))
 		key["MD5"] = getFileMd5("storage.dat")
 		jsonstr := map2Json(key)
 		writeFile("key.dat", AesEncrypt(jsonstr, keyroot))
