@@ -8,6 +8,10 @@ type Phone interface {
 	info()
 }
 
+func info() {
+	fmt.Println("NoPhone")
+}
+
 type iPhone struct {
 	Version string
 	Money   int
@@ -42,18 +46,20 @@ var (
 	samsungphone SamsungPhone = SamsungPhone{Version: "???", Money: 10000, Release: 2020}
 )
 
-func info(input Phone) {
+func info2(input Phone) {
 	input.info()
 }
 
 func main() {
-	var input string
-	fmt.Scanln(&input)
-	if input == "i" {
-		info(iphone12)
-	} else if input == "m" {
-		info(miphone)
-	} else {
-		info(samsungphone)
-	}
+	/* 	var input string
+	   	fmt.Scanln(&input)
+	   	if input == "i" {
+	   		info2(iphone12)
+	   	} else if input == "m" {
+	   		info2(miphone)
+	   	} else {
+	   		info2(samsungphone)
+	   	} */
+	var phone1 Phone
+	phone1.info()
 }

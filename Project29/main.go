@@ -14,7 +14,7 @@ func main() {
 		IntChan <- i
 	}
 	for {
-		select {
+		select { //随机选择
 		case v := <-StringChan:
 			{
 				fmt.Println(v)
