@@ -22,7 +22,7 @@ func main() {
 	fmt.Println(XUKAI.Salary)
 	b:=100
 	c:=&b
-	fmt.Println(add2(c))
+	fmt.Println(add2(*c))
 }
 
 func (p *Employee) addSalary(Add int) {

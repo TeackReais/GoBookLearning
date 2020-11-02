@@ -14,7 +14,7 @@ func main() {
 	f2 = square
 	fmt.Printf("%T\n", f2)
 	fmt.Printf("%v\n", f2)
-	fmt.Println(f2==f)
+	//	fmt.Println(f2==f) //func can only be compared to nil
 	fmt.Println(f2(2))
 }
 func square(n int) int     { return n * n }

@@ -1,17 +1,16 @@
 package main
 
-import (
+/*import (
 	"bytes"
 	"io"
 	"os"
-	"time"
-)
+)*/
 
+//interface类型的使用
 func main() {
-	var w io.Writer
-	w = os.Stdout
-	w = new(bytes.Buffer)
-	var rwc io.ReadWriteCloser
-	rwc = os.Stdout
-	time.Second
+	/* 	var w io.Writer //interface
+	   	w = os.Stdout   //结构体实例分配
+	   	w = new(bytes.Buffer)
+	   	var rwc io.ReadWriteCloser
+	   	rwc = os.Stdout*/ 
 }
