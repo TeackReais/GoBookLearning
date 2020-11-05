@@ -59,8 +59,15 @@ func initialization() {
 	fmt.Println("创建完毕。")
 }
 
-func programStart() {
+func programStart() (judge bool) {
+	judge = true
 	keydat := readFile("key.dat")
+	defer func() {
+		catchpanic := recover()
+		if catchpanic != nil {
+			judge = false //defer在return后执行
+		}
+	}()
 	jsonstr := AesDecrypt(keydat, keyroot) //无法处理解密失败的错误
 	key = json2Map(jsonstr)
 	if key["MD5"] != getFileMd5("storage.dat") {
@@ -69,6 +76,7 @@ func programStart() {
 	storagedat := readFile("storage.dat")
 	jsonstr2 := AesDecrypt(storagedat, key["KeyMain"])
 	storage = json2Map(jsonstr2)
+	return judge
 }
 
 func deleteDatabase() {

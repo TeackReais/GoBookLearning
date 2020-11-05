@@ -28,7 +28,8 @@ func main() {
 			return
 		} else {
 			fmt.Printf("向服务器发送了%d个字节。\n", n)
-			errors.New
+			err := errors.New("无错误")
+			fmt.Println(err)
 		}
 	}
 }

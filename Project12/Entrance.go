@@ -13,7 +13,9 @@ func main() {
 	storagebool := judgeFileExist("storage.dat")
 	keybool := judgeFileExist("key.dat")
 	if storagebool && keybool {
-		programStart() //导入map
+		if !programStart() {
+			filesError()
+		} //导入map
 	} else if storagebool || keybool {
 		filesError() //文件被破坏
 	} else {
