@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	listen, err := net.Listen("tcp", "127.0.0.1:20000")
+	listen, err := net.Listen("tcp", "10.10.10.244:20000")
 	defer listen.Close()
 	if err != nil {
 		fmt.Printf("服务器监听失败，错误为%s。\n", err.Error())

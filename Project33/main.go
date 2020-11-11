@@ -9,7 +9,7 @@ var a int = 1
 type example1 *int
 
 type d struct{
-	example1
+	//example1
 }
 
 type Employee struct {
