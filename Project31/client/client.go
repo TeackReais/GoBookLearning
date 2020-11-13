@@ -7,8 +7,6 @@ import (
 )
 
 func main() {
-	var a string = "123"
-	fmt.Println(cap(a))
 	ServerAdd := make(map[string]string)
 	ServerAdd = ReadTheFile()
 	conn, err := net.Dial("tcp", ServerAdd["ServerAddress"])

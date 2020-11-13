@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package example;
+
+message message1
+{
+    int32 id =1;
+}
