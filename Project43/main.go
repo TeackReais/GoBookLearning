@@ -2,7 +2,11 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"net/http"
+	"os"
+	"path"
+
+	// "io/ioutil"
 	// "net/http"
 	// "strconv"
 	// "time"
@@ -11,16 +15,22 @@ import (
 )
 
 func main() {
-	fmt.Println("QRCODE")
-	var png []byte
-	png, err := qrcode.Encode("https://www.baidu.com", qrcode.Highest, 256)
+	var information string
+	ProgramPath, err := os.Getwd()
+	Path := path.Dir(ProgramPath) + "/File.png"
+	fmt.Println("请输入二维码的内容，程序将生成一张二维码图片")
+	fmt.Scanln(&information)
+	fmt.Println(Path)
+	data, err := qrcode.Encode(information, qrcode.Highest, 512)
 	if err != nil {
 		fmt.Println("ERR=", err)
+		return
 	}
-	err = ioutil.WriteFile("QRCODE.png", png, 0600)
-	if err != nil {
-		fmt.Println("ERR=", err)
-	}
+	fmt.Println("Success")
+	http.HandleFunc("/test/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write(data)
+	})
+	http.ListenAndServe("localhost:8080", nil)
 	// http.HandleFunc("/login/", loginHandle)
 	// http.HandleFunc("/start/", startHandle)
 	// server := &http.Server{
